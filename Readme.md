@@ -32,7 +32,7 @@ docker exec -ti alpine-sshdx passwd
 
 After this from your linux
 X environment or from the Xquartz
-terminal.
+terminal. See note Xquartz
 
 ssh to your new container
 ```bash
@@ -49,3 +49,20 @@ wireshark
 ```
 
 Alpine firefox/wireshark runs in your X now.
+
+# Xquartz note
+For cmd+v cmd+c e.g. copy/paste to work you need to do this on your mac.
+```bash
+cd ~/
+vi .Xdefaults
+```
+
+paste this line (without the quotes)
+
+`*VT100.translations: #override  Meta <KeyPress> V:  insert-selection(PRIMARY, CUT_BUFFER0) \n`
+
+Then
+```bash
+xrdb -merge ~/.Xdefaults
+```
+restart Xquartz and all works.
