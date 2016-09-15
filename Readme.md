@@ -39,16 +39,14 @@ ssh to your new container
 ssh -i id_rsa -p 4848 -X root@<dockerhost>
 ```
 
-Inside the new docker container
-
-I used firefox, wireshark as example
+For ssh key forwarding use ssh-agent
 ```bash
-apk --update add firefox-esr wireshark
-firefox &
-wireshark
+ssh-agent
+ssh-add id_rsa
+ssh -A -p 4848 -X root@<dockerhost>
+ssh -C -A -t -X -p 4848  root@<dockerhost> ssh -C -A -t -X -p 777 root@<hop> firefox
 ```
-
-Alpine firefox/wireshark runs in your X now.
+in the last example the each hop must have the same authorized_keys.
 
 # Xquartz note
 For cmd+v cmd+c e.g. copy/paste to work you need to do this on your mac.
@@ -61,8 +59,10 @@ paste this line (without the quotes)
 
 `*VT100.translations: #override  Meta <KeyPress> V:  insert-selection(PRIMARY, CUT_BUFFER0) \n`
 
+esc :wq
+
 Then
 ```bash
 xrdb -merge ~/.Xdefaults
 ```
-restart Xquartz and all works.
+restart Xquartz and cmd+c and cmd+v works.
