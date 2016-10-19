@@ -42,8 +42,7 @@ ssh -i id_rsa -p 4848 -X root@<dockerhost>
 For ssh key forwarding use ssh-agent
 ```bash
 ssh-agent
-ssh-add id_rsa
-ssh -A -p 4848 -X root@<dockerhost>
+ssh-add id_rsassh -A -p 4848 -X root@<dockerhost>
 ssh -C -A -t -X -p 4848  root@<dockerhost> ssh -C -A -t -X -p 777 root@<hop> firefox
 ```
 in the last example the each hop must have the same authorized_keys.
