@@ -14,6 +14,7 @@ mkdir -p /var/run/sshd
  && sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config \
  && sed -i "s/#AuthorizedKeysFile/AuthorizedKeysFile/g" /etc/ssh/sshd_config \
  && sed -i "s/#X11Forwarding no/X11Forwarding yes/g" /etc/ssh/sshd_config \
+ && sed -i "s/#PermitUserEnvironment no/PermitUserEnvironment yes/g" /etc/ssh/sshd_config \
  && echo "ForwardX11Trusted yes" >> /etc/ssh/ssh_config
 
 #prepare xauth
@@ -24,8 +25,8 @@ uuidgen > /etc/machine-id
 
 # set keyboard for all sh users
 echo "export QT_XKB_CONFIG_ROOT=/usr/share/X11/locale" >> /etc/profile
-# set keyboard for direct command use 
-echo "QT_XKB_CONFIG_ROOT=/usr/share/X11/locale" >> /root/.ssh/environment
+# set keyboard for direct command use
+echo "`QT_XKB_CONFIG_ROOT`='/usr/share/X11/locale'" >> /root/.ssh/environment
 
 source /etc/profile
 
