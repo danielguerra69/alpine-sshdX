@@ -22,6 +22,9 @@ touch /root/.Xauthority
 # generate machine-id
 uuidgen > /etc/machine-id
 
+# set keyboard
+echo "export QT_XKB_CONFIG_ROOT=/usr/share/X11/locale" >> /etc/profile
+
 source /etc/profile
 
 exec "$@"
