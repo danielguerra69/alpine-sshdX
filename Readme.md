@@ -22,6 +22,9 @@ docker run -p 4848:22 --name alpine-sshdx --hostname alpine-sshdx --volumes-from
 
 # Usage password
 
+There is one user is the system
+user:alpine
+pass:alpine
 Didn't want key based set a password for root.
 ```bash
 docker run -p 4848:22 --name alpine-sshdx --hostname alpine-sshdx -d danielguerra/alpine-sshdx
