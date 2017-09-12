@@ -8,13 +8,6 @@ ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
 #prepare run dir
 mkdir -p /var/run/sshd
 
-
-#prepare sshd config
- sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config \
- && sed -i "s/#PermitUserEnvironment no/PermitUserEnvironment yes/g" /etc/ssh/sshd_config \
- && sed -i "s/#X11UseLocalhost yes/X11UseLocalhost no/g" /etc/ssh/sshd_config \
- && echo "ForwardX11Trusted yes" >> /etc/ssh/ssh_config
-
 #prepare xauth
 touch /root/.Xauthority
 
