@@ -9,7 +9,12 @@ RUN addgroup alpine \
 && echo "alpine:alpine" | /usr/sbin/chpasswd \
 && echo "alpine    ALL=(ALL) ALL" >> /etc/sudoers
 
+RUN cp -r /etc/ssh /ssh_orig
+RUN rm -rf /etc/ssh/*
+
 ADD etc /etc
 ADD docker-entrypoint.sh /usr/local/bin
+
+VOLUME ["/etc/ssh","/home/alpine"]
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/usr/sbin/sshd","-D"]
