@@ -1,7 +1,7 @@
 # About this container
 
-This an alpine sshd container made for X forwarding.
-Start a local X-server. On mac you can use XQuartz.
+This is an alpine sshd container made for X forwarding.
+Start a local X-server. On a mac you can use XQuartz.
 Ssh into the container and run your favorite alpine
 x-app (e.g. firefox) and see it on your local machine.
 
@@ -31,7 +31,7 @@ docker run -p 4848:22 --name alpine-sshdx --hostname alpine-sshdx -d danielguerr
 docker exec -ti alpine-sshdx passwd
 ```
 
-# On you workstation
+# On your workstation
 
 After this from your linux
 X environment or from the Xquartz
