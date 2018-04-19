@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Daniel Guerra <daniel.guerra69@gmail.com>
 
 RUN apk add --update openssh util-linux dbus ttf-freefont xauth xf86-input-keyboard sudo\
