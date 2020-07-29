@@ -32,10 +32,6 @@ fi
 #prepare run dir
 mkdir -p /var/run/sshd
 
-#prepare xauth
-touch /home/alpine/.Xauthority
-chown alpine:alpine /home/alpine/.Xauthority
-
 # generate machine-id
 uuidgen > /etc/machine-id
 
